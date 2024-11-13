@@ -8,7 +8,7 @@ const chatSchema: Schema = new Schema({
         type:String,
         required:true
     }],
-    lastmessage:{
+    lastMessage:{
         type:mongoose.Types.ObjectId,
         ref:'Message'
     }

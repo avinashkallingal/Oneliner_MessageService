@@ -22,6 +22,10 @@ const MessageSchema: Schema = new Schema({
     videoUrl:{
         type:[String],
     },
+    fileType :{
+        type:String
+    },
+    
     read:{
         type:Boolean,
         default:false

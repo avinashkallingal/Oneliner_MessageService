@@ -44,19 +44,49 @@ class ChatController {
         }
     }
 
-    async saveNewMessage(data: { chatId: string, content: string, images: string[], video: string, record: string, recordDuration: number, senderId: string, receiverId: string }) {
+    async getInboxMessages(data: { userId: string}) {
+        try {
+            const userId = data.userId;
+          
+            const result = await this.chatService.fetchInboxMessages(userId);
+            return result;
+        } catch (error) {
+            console.error("Error fetching messages:", error);
+            throw error;
+        }
+    }
+
+    async readUpdate(data: { read: boolean,userId:string,recievedId:string}) {
+        try {
+            const read = data.read;
+            const userId=data.userId;
+            const recievedId=data.recievedId
+            const result = await this.chatService.readUpdate(read,userId,recievedId);
+            return result;
+        } catch (error) {
+            console.error("Error fetching messages:", error);
+            throw error;
+        }
+    }
+
+    async saveNewMessage(data: { chatId: string,pdf:any, content: string,fileType:string, image: string, video: string, record: string, recordDuration: number, senderId: string, receiverId: string }) {
         try {
 
+            console.log(data.image,"images on message service%%%%%%%%%%%%%%%%%%")
+            console.log(data.video,"video on message service%%%%%%%%%%%%%%%%%%")
             const chatId = data.chatId;
             const content = data.content;
-            const images = data.images;
+            const image = data.image;
             const video = data.video;
             const record = data.record;
+            const fileType=data.fileType;
+            const pdf=data.pdf
             const recordDuration = data.recordDuration
             const senderId = data.senderId;
             const recieverId = data.receiverId;
 
-            const result = await this.chatService.newMessage(chatId, content, images, video, senderId, recieverId);
+            const result = await this.chatService.newMessage(chatId, content,fileType, image,pdf, video, senderId, recieverId);
+       
             return result;
         } catch (error) {
             console.error("Error creating messages:", error);
