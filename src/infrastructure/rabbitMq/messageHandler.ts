@@ -37,15 +37,15 @@ export default class MessageHandler {
           break;
 
       // notificaiton impementaion here
-      // case 'save-notification':
-      //     response = await notificationController.saveNotification(data);
-      //     break;
-      // case 'getNotification':
-      //     response = await notificationController.getNotification(data);
-      //     break;
-      // case 'update-Notification':
-      //     response = await notificationController.updateNotification(data)
-      //     break;
+      case 'save-notification':
+          response = await notificationController.saveNotification(data);
+          break;
+      case 'get-Notification':
+          response = await notificationController.getNotification(data);
+          break;
+      case 'update-Notification':
+          response = await notificationController.updateNotification(data)
+          break;
       default:
         response = { error: "Operation not supported" };
         break;

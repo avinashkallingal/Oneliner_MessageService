@@ -5,6 +5,7 @@ export class NotificationRepository {
 
     async saveNotification(data: any) {
         try {
+            console.log(data," data from like notification triger socket***********")
             if (!data.userId || !data.senderId || !data.type) {
                 return { success: false, message: 'id is missing' }
             }
