@@ -36,6 +36,7 @@ class NotificationService {
 
     async updateNotification(id: string) {
         try {
+            console.log(id," 22222222222222222222222")
             const result = await this.notificationRepo.updateNotification(id)
             if (result && result?.matchedCount > 0) {
                 return { success: true, message: 'updated the notificaiton' };

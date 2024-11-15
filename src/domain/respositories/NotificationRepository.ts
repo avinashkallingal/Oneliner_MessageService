@@ -29,7 +29,7 @@ export class NotificationRepository {
         try {
             console.log(id)
             const newId = new mongoose.Types.ObjectId(id);
-            const notifications = await Notification.find({ senderId: newId })
+            const notifications = await Notification.find({ senderId: newId,isRead: false })
             .sort({ _id: -1 })  
             .limit(15);
             return notifications
@@ -40,7 +40,9 @@ export class NotificationRepository {
 
     async updateNotification(id: string) {
         try {
+            console.log(id,"44444444444444444444")
             const update = await Notification.updateMany({ userId: id }, { $set: { isRead: true } });
+            console.log(update," update in read notification repo&&&&&&&&&&&&&")
             return update;
         } catch (error) {
             console.log('Error in the updateNotification in repo -->', error);
