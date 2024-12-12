@@ -242,7 +242,8 @@ export class ChatRepository implements IChatRepository {
       });
 
       const savedmessage = await newMessage.save();
-      console.log(savedmessage, "savedMessage");
+      console.log(savedmessage, "savedMessage$$$$$$$$$$$$$$$$$$$$22222222");
+      
       const update = await Chat.findOneAndUpdate(
         { _id: new mongoose.Types.ObjectId(chatId) },
         { lastMessage: savedmessage._id }
