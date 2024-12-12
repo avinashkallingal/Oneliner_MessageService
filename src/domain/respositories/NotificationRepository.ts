@@ -32,6 +32,7 @@ export class NotificationRepository {
             const notifications = await Notification.find({ senderId: newId,isRead: false })
             .sort({ _id: -1 })  
             .limit(15);
+            console.log(notifications," consoling notification in ")
             return notifications
         } catch (error) {
 
@@ -41,7 +42,7 @@ export class NotificationRepository {
     async updateNotification(id: string) {
         try {
             console.log(id,"44444444444444444444")
-            const update = await Notification.updateMany({ userId: id }, { $set: { isRead: true } });
+            const update = await Notification.updateMany({ senderId: id }, { $set: { isRead: true } });
             console.log(update," update in read notification repo&&&&&&&&&&&&&")
             return update;
         } catch (error) {
